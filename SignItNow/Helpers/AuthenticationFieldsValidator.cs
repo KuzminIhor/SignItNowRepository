@@ -25,7 +25,7 @@ namespace SignItNow.Helpers
 		{
 			if (string.IsNullOrEmpty(userName))
 			{
-				throw new AuthenticationException("Ви не ввели логін!\n");
+				throw new AuthenticationException("Ви не ввели унікальне ім'я!\n");
 			}
 		}
 

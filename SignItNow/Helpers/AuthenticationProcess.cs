@@ -59,7 +59,7 @@ namespace SignItNow.Helpers
 
 			if (userFromDatabase != null)
 			{
-				throw new AuthenticationException("Користувач з даним\nлогіном вже існує!\n");
+				throw new AuthenticationException("Користувач з даним\nунікальним іменем вже існує!\n");
 			}
 			
 			var signRole = roleRepository.GetRole(RoleName.Signer);
