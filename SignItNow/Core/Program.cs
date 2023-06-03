@@ -17,7 +17,7 @@ namespace SignItNow.Core
 		public const string AvailableFileExtentions = ".pdf,.xlsx,.pptx,.docx,.xls,.ppt,.doc";
 
 		public const string BaseFilePath = "D:\\SignItNow\\SignItNow";
-		public const string UploadedDocsFolder = "AppData\\DocsForSign";
+		public const string UploadedDocsFolder = "AppData\\DocForSign";
 		public const string TempDocsFolder = "AppData\\TempDoc";
 
 		public const bool VisualizeSignature = true;
