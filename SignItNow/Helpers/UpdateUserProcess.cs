@@ -1,7 +1,9 @@
-﻿using SignItNow.Core;
+﻿using System.Security.Authentication;
+using SignItNow.Core;
 using SignItNow.Helpers.Abstracts;
 using SignItNow.Helpers.Interfaces;
 using SignItNow.Model;
+using SignItNow.Model.Exceptions;
 using SignItNow.Repositories.Interfaces;
 
 namespace SignItNow.Helpers
@@ -27,6 +29,13 @@ namespace SignItNow.Helpers
 		public void Update(User user)
 		{
 			var userInDB = userRepository.GetUser(Program.UserId.Value);
+
+			var checkForUniqueUserNameUserInDB = userRepository.GetUser(user.UserName);
+
+			if (checkForUniqueUserNameUserInDB != null)
+			{
+				throw new AuthenticationException("Користувач з таким\nунікальним іменем вже існує!");
+			}
 
 			userInDB.UserName = encryptorDecryptor.Encrypt(user.UserName);
 			userInDB.FirstName = encryptorDecryptor.Encrypt(user.FirstName);
