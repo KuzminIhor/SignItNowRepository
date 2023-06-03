@@ -38,7 +38,7 @@ namespace SignItNow.Repositories
 		public List<User> GetUsersCollectionExceptAdmin()
 		{
 			return db.Users.Include(u => u.CreatedTasks).Include(u => u.UserRoles).Include(u => u.SigningTasks)
-				.Where(u => u.Id > 0).ToList();
+				.Where(u => u.Id > 1).ToList();
 		}
 
 		public bool IsCorrectPassword(int userId, string password)

@@ -52,6 +52,15 @@ namespace SignItNow.Forms
 				this.LoginTextBox.Text = string.Empty;
 				this.PasswordTextBox.Text = string.Empty;
 
+				if (userType == "Адмін")
+				{
+					AdminForm.GetInstance().FillTasksTable();
+					AdminForm.GetInstance().FillUsersTable();
+
+					formRedirectionService.Redirect(this, formToRedirect);
+					return;
+				}
+
 				if (userBannedService.IsBanned(Program.UserId.Value))
 				{
 					DialogResult result = MessageBox.Show("Вас заблокували! Зверніться з деталями до адміністратора!",
@@ -60,12 +69,6 @@ namespace SignItNow.Forms
 					Program.UserId = null;
 
 					return;
-				}
-
-				if (userType == "Адмін")
-				{
-					AdminForm.GetInstance().FillTasksTable();
-					AdminForm.GetInstance().FillUsersTable();
 				}
 
 				formRedirectionService.Redirect(this, formToRedirect);
