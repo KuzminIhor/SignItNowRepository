@@ -1,0 +1,19 @@
+Username: IhorK
+Firstname: Ihor
+Lastname: Kuzmin
+Password: 1234
+
+Username: OlegM
+Firstname: Oleg Ivan
+Lastname: Melkin
+Password: 1234
+
+Username: KatyaH
+Firstname: Katya-Nastya
+Lastname: Hannivna
+Password: 1234
+
+Username: admin
+Firstname: admin
+Lastname: admin
+Password: admin
