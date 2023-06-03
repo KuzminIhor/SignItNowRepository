@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using iTextSharp.text;
+﻿using System.IO;
 using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.PowerPoint;
@@ -41,7 +39,6 @@ namespace SignItNow.Helpers
 		public void UploadPDF(string filePath)
 		{
 			var destinationFilePath = Path.Combine(Program.BaseFilePath, Program.TempDocsFolder, Program.UserId.Value + ".pdf");
-			//var tempFilePath = Path.Combine(Program.BaseFilePath, Program.TempDocsFolder, Program.UserId.Value + "_" + Guid.NewGuid() + "_temp.pdf");
 
 			using (var reader = new PdfReader(filePath))
 			using (var fileStream = new FileStream(destinationFilePath, FileMode.Create))
@@ -67,11 +64,6 @@ namespace SignItNow.Helpers
 					columnText.AddElement(new iTextSharp.text.Chunk("Signatures:", font));
 					columnText.Go(false); // Set simulate to false and text to null
 				}
-
-				/*for (var i = 1; i <= pageCount; i++)
-				{
-					stamper.InsertPage(i + pageCount, reader.GetPageSize(i));
-				}*/
 
 				stamper.Close();
 				reader.Close();

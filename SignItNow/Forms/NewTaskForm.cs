@@ -1,25 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.PowerPoint;
-using Microsoft.Office.Interop.Word;
 using NLog;
 using SignItNow.Core;
 using SignItNow.Helpers.Interfaces;
 using SignItNow.Model;
 using SignItNow.Model.Enums;
 using SignItNow.Model.Exceptions;
-using SignItNow.Repositories;
 using SignItNow.Services.Interfaces;
-using Application = System.Windows.Forms.Application;
 
 namespace SignItNow.Forms
 {

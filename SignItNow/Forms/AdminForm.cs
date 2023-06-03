@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,7 +10,6 @@ using SignItNow.Core;
 using SignItNow.Helpers.Interfaces;
 using SignItNow.Model;
 using SignItNow.Model.Enums;
-using SignItNow.Model.Exceptions;
 using SignItNow.Repositories.Interfaces;
 using SignItNow.Services.Interfaces;
 

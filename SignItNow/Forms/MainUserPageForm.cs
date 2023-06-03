@@ -1,16 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using NLog;
 using SignItNow.Core;
 using SignItNow.Model.Enums;
-using SignItNow.Repositories.Interfaces;
 using SignItNow.Services.Interfaces;
 
 namespace SignItNow.Forms
