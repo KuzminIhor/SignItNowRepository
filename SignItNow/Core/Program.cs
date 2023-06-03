@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows.Forms;
 using NLog;
+using System.Configuration;
 using SignItNow.AppData.Unity;
 using SignItNow.Forms;
 using SignItNow.Services.Interfaces;
@@ -13,21 +14,30 @@ namespace SignItNow.Core
 	    private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 		public static int? UserId { get; set; }
 
-		public const string SQLConnection = "Server=(localdb)\\mssqllocaldb;Database=SignItNowDB;Trusted_Connection=True;";
+		public static string SQLConnection;
 		public const string AvailableFileExtentions = ".pdf,.xlsx,.pptx,.docx,.xls,.ppt,.doc";
 
-		public const string BaseFilePath = "D:\\SignItNow\\SignItNow";
-		public const string UploadedDocsFolder = "AppData\\DocForSign";
-		public const string TempDocsFolder = "AppData\\TempDoc";
+		public static string BaseFilePath;
+		public static string UploadedDocsFolder;
+		public static string TempDocsFolder;
 
-		public const bool VisualizeSignature = true;
+		public static bool VisualizeSignature = true;
 
 		[STAThread]
 	    static void Main()
 	    {
 		    _logger.Info("Запуск програми");
 
-			UnityConfig.Register();
+		    var configMap = new ExeConfigurationFileMap { ExeConfigFilename = @"D:\SignItNow\SignItNow\Core\App.config" };
+		    var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+
+		    SQLConnection = config.AppSettings.Settings["DatabaseConnectionString"].Value;
+		    BaseFilePath = config.AppSettings.Settings["BaseFilePath"].Value;
+		    UploadedDocsFolder = config.AppSettings.Settings["UploadedDocsFolder"].Value;
+		    TempDocsFolder = config.AppSettings.Settings["TempDocsFolder"].Value;
+		    VisualizeSignature = Convert.ToBoolean(config.AppSettings.Settings["VisualizeSignature"].Value);
+
+		    UnityConfig.Register();
 
 			_logger.Info("Залежності зареєстровані");
 

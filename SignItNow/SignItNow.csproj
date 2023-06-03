@@ -499,6 +499,7 @@
       <Link>.editorconfig</Link>
     </None>
     <None Include="AppData\Logs\Logs.log" />
+    <None Include="Core\App.config" />
     <None Include="Core\Compression\Snappy\lib\linux\libsnappy64.so" />
     <None Include="Core\Compression\Snappy\lib\osx\libsnappy64.dylib" />
     <None Include="Core\Compression\Zstandard\lib\linux\libzstd.so" />
