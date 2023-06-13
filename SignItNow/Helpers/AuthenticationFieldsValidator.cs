@@ -14,7 +14,7 @@ namespace SignItNow.Helpers
 
 			if (isRegistrationOrUpdate)
 			{
-				ValidateFirstName(user.FirstName);
+				ValidateFirstName(user.FirstName);	
 				ValidateLastName(user.LastName);
 			}
 
