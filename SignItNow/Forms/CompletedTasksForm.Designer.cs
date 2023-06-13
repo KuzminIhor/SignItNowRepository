@@ -32,13 +32,13 @@ namespace SignItNow.Forms
 			this.GreetingsLabel = new System.Windows.Forms.Label();
 			this.RefreshButton = new System.Windows.Forms.Button();
 			this.completedTasksDataGridView = new System.Windows.Forms.DataGridView();
+			this.CancelButton = new System.Windows.Forms.Button();
 			this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.DocumentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TaskCreator = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ReviewDoc = new System.Windows.Forms.DataGridViewButtonColumn();
-			this.CancelButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.completedTasksDataGridView)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -47,11 +47,11 @@ namespace SignItNow.Forms
 			this.GreetingsLabel.AutoSize = true;
 			this.GreetingsLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.GreetingsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.GreetingsLabel.Location = new System.Drawing.Point(200, 9);
+			this.GreetingsLabel.Location = new System.Drawing.Point(188, 9);
 			this.GreetingsLabel.Name = "GreetingsLabel";
-			this.GreetingsLabel.Size = new System.Drawing.Size(845, 45);
+			this.GreetingsLabel.Size = new System.Drawing.Size(927, 45);
 			this.GreetingsLabel.TabIndex = 32;
-			this.GreetingsLabel.Text = "Ваші Підписані та Відмовлені у підписі задачі";
+			this.GreetingsLabel.Text = "Ваші Підписані та Відмовлені у підписі документи";
 			this.GreetingsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// RefreshButton
@@ -81,6 +81,16 @@ namespace SignItNow.Forms
 			this.completedTasksDataGridView.Size = new System.Drawing.Size(1246, 315);
 			this.completedTasksDataGridView.TabIndex = 36;
 			this.completedTasksDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.completedTasksDataGridView_CellContentClick);
+			// 
+			// CancelButton
+			// 
+			this.CancelButton.Location = new System.Drawing.Point(1140, 378);
+			this.CancelButton.Name = "CancelButton";
+			this.CancelButton.Size = new System.Drawing.Size(120, 60);
+			this.CancelButton.TabIndex = 35;
+			this.CancelButton.Text = "Назад";
+			this.CancelButton.UseVisualStyleBackColor = true;
+			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// Id
 			// 
@@ -116,7 +126,7 @@ namespace SignItNow.Forms
 			// 
 			// Status
 			// 
-			this.Status.HeaderText = "Підписано/Відмовлено";
+			this.Status.HeaderText = "Підписано/Відхилено";
 			this.Status.MinimumWidth = 6;
 			this.Status.Name = "Status";
 			this.Status.ReadOnly = true;
@@ -129,16 +139,6 @@ namespace SignItNow.Forms
 			this.ReviewDoc.Name = "ReviewDoc";
 			this.ReviewDoc.ReadOnly = true;
 			this.ReviewDoc.Width = 125;
-			// 
-			// CancelButton
-			// 
-			this.CancelButton.Location = new System.Drawing.Point(1140, 378);
-			this.CancelButton.Name = "CancelButton";
-			this.CancelButton.Size = new System.Drawing.Size(120, 60);
-			this.CancelButton.TabIndex = 35;
-			this.CancelButton.Text = "Назад";
-			this.CancelButton.UseVisualStyleBackColor = true;
-			this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
 			// 
 			// CompletedTasksForm
 			// 

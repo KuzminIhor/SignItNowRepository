@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.PowerPoint;
@@ -7,6 +8,8 @@ using SignItNow.Core;
 using SignItNow.Helpers.Abstracts;
 using SignItNow.Helpers.Interfaces;
 using Document = Microsoft.Office.Interop.Word.Document;
+using Font = iTextSharp.text.Font;
+using Paragraph = iTextSharp.text.Paragraph;
 
 namespace SignItNow.Helpers
 {
@@ -52,7 +55,9 @@ namespace SignItNow.Helpers
 					stamper.InsertPage(pageCount + 1, blankPage);
 
 					var contentByte = stamper.GetOverContent(pageCount + 1);
-					var font = iTextSharp.text.FontFactory.GetFont(BaseFont.HELVETICA, 12);
+
+					var baseFont = BaseFont.CreateFont(Path.Combine(Program.BaseFilePath, "Core", "Fonts", "times new roman.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+					var font = new Font(baseFont, 12, Font.NORMAL);
 
 					// Set the position of the text
 					var x = 20f; // Adjust the value as needed
@@ -61,7 +66,7 @@ namespace SignItNow.Helpers
 					// Create a new ColumnText object to add the text
 					var columnText = new ColumnText(contentByte);
 					columnText.SetSimpleColumn(x, y, blankPage.Width - x, y - 20f);
-					columnText.AddElement(new iTextSharp.text.Chunk("Signatures:", font));
+					columnText.AddElement(new Chunk("Підписи:", font));
 					columnText.Go(false); // Set simulate to false and text to null
 				}
 
@@ -105,7 +110,8 @@ namespace SignItNow.Helpers
 					stamper.InsertPage(pageCount + 1, blankPage);
 
 					var contentByte = stamper.GetOverContent(pageCount + 1);
-					var font = iTextSharp.text.FontFactory.GetFont(BaseFont.HELVETICA, 12);
+					var baseFont = BaseFont.CreateFont(Path.Combine(Program.BaseFilePath, "Core", "Fonts", "times new roman.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+					var font = new Font(baseFont, 12, Font.NORMAL);
 
 					// Set the position of the text
 					var x = 20f; // Adjust the value as needed
@@ -114,7 +120,7 @@ namespace SignItNow.Helpers
 					// Create a new ColumnText object to add the text
 					var columnText = new ColumnText(contentByte);
 					columnText.SetSimpleColumn(x, y, blankPage.Width - x, y - 20f);
-					columnText.AddElement(new iTextSharp.text.Chunk("Signatures:", font));
+					columnText.AddElement(new iTextSharp.text.Chunk("Підписи:", font));
 					columnText.Go();
 
 					stamper.Close();
@@ -160,7 +166,8 @@ namespace SignItNow.Helpers
 					stamper.InsertPage(pageCount + 1, blankPage);
 
 					var contentByte = stamper.GetOverContent(pageCount + 1);
-					var font = iTextSharp.text.FontFactory.GetFont(BaseFont.HELVETICA, 12);
+					var baseFont = BaseFont.CreateFont(Path.Combine(Program.BaseFilePath, "Core", "Fonts", "times new roman.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+					var font = new Font(baseFont, 12, Font.NORMAL);
 
 					// Set the position of the text
 					var x = 20f; // Adjust the value as needed
@@ -169,7 +176,7 @@ namespace SignItNow.Helpers
 					// Create a new ColumnText object to add the text
 					var columnText = new ColumnText(contentByte);
 					columnText.SetSimpleColumn(x, y, blankPage.Width - x, y - 20f);
-					columnText.AddElement(new iTextSharp.text.Chunk("Signatures:", font));
+					columnText.AddElement(new iTextSharp.text.Chunk("Підписи:", font));
 					columnText.Go();
 
 					stamper.Close();
@@ -215,7 +222,8 @@ namespace SignItNow.Helpers
 					stamper.InsertPage(pageCount + 1, blankPage);
 
 					var contentByte = stamper.GetOverContent(pageCount + 1);
-					var font = iTextSharp.text.FontFactory.GetFont(BaseFont.HELVETICA, 12);
+					var baseFont = BaseFont.CreateFont(Path.Combine(Program.BaseFilePath, "Core", "Fonts", "times new roman.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+					var font = new Font(baseFont, 12, Font.NORMAL);
 
 					// Set the position of the text
 					var x = 20f; // Adjust the value as needed
@@ -224,7 +232,7 @@ namespace SignItNow.Helpers
 					// Create a new ColumnText object to add the text
 					var columnText = new ColumnText(contentByte);
 					columnText.SetSimpleColumn(x, y, blankPage.Width - x, y - 20f);
-					columnText.AddElement(new iTextSharp.text.Chunk("Signatures:", font));
+					columnText.AddElement(new iTextSharp.text.Chunk("Підписи:", font));
 					columnText.Go();
 
 					stamper.Close();

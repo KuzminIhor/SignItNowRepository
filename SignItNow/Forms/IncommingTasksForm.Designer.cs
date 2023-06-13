@@ -133,11 +133,11 @@ namespace SignItNow.Forms
 			this.GreetingsLabel.AutoSize = true;
 			this.GreetingsLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.GreetingsLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-			this.GreetingsLabel.Location = new System.Drawing.Point(422, 9);
+			this.GreetingsLabel.Location = new System.Drawing.Point(298, 9);
 			this.GreetingsLabel.Name = "GreetingsLabel";
-			this.GreetingsLabel.Size = new System.Drawing.Size(430, 45);
+			this.GreetingsLabel.Size = new System.Drawing.Size(703, 45);
 			this.GreetingsLabel.TabIndex = 31;
-			this.GreetingsLabel.Text = "Вхідні задачі на підпис";
+			this.GreetingsLabel.Text = "Вхідні задачі з документами на підпис";
 			this.GreetingsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// RefreshButton

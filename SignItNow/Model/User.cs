@@ -13,6 +13,5 @@ namespace SignItNow.Model
         public List<UserRole> UserRoles { get; set; } = new List<UserRole>();
         public List<TaskInfo> CreatedTasks { get; set; } = new List<TaskInfo>();
         public List<TaskSigner> SigningTasks { get; set; } = new List<TaskSigner>();
-//        public bool IsBanned { get; set; }
     }
 }

@@ -15,6 +15,7 @@ using Spire.Pdf;
 using Spire.Pdf.Annotations;
 using Spire.Pdf.General.Find;
 using Spire.Pdf.Graphics;
+using Font = iTextSharp.text.Font;
 using Path = System.IO.Path;
 using PdfDocument = Spire.Pdf.PdfDocument;
 
@@ -54,11 +55,8 @@ namespace SignItNow.Helpers
 			var encryptorDecryptor = ServiceLocator.Get<IEncryptorDecryptor>();
 
 			var signatureText =
-				$"Signed by {encryptorDecryptor.Decrypt(user.FirstName)} {encryptorDecryptor.Decrypt(user.LastName)}";
+				$"Підписано {encryptorDecryptor.Decrypt(user.FirstName)} {encryptorDecryptor.Decrypt(user.LastName)}";
 
-			//for (int i = 1; i < 15; i++)
-			//{
-			//string tempFilePath = Path.Combine(Program.BaseFilePath, Program.TempDocsFolder, Guid.NewGuid() + "_temp.pdf");
 			string tempFilePath = Path.Combine(Program.BaseFilePath, Program.TempDocsFolder,
 				Guid.NewGuid() + "_temp.pdf");
 
@@ -67,7 +65,7 @@ namespace SignItNow.Helpers
 			document.LoadFromFile(filePath);
 
 			// Find the location of "Signatures:" text
-			(PdfPageBase page, int pageNumber) = FindSignaturesTextPage(document, "Signatures:");
+			(PdfPageBase page, int pageNumber) = FindSignaturesTextPage(document, "Підписи:");
 			if (page == null)
 			{
 				// "Signatures:" text not found, stop the process
@@ -76,7 +74,10 @@ namespace SignItNow.Helpers
 			}
 
 			// Get the position of "Signatures:" text
-			PointF textLocation = FindSignaturesTextLocation(page, "Signatures:");
+			PointF textLocation = FindSignaturesTextLocation(page, "Підписи:");
+
+			var baseFont = BaseFont.CreateFont(Path.Combine(Program.BaseFilePath, "Core", "Fonts", "times new roman.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+			var font = new Font(baseFont, 12, Font.NORMAL);
 
 			using (PdfReader reader = new PdfReader(filePath))
 			using (FileStream fs = new FileStream(tempFilePath, FileMode.Create))
@@ -90,7 +91,7 @@ namespace SignItNow.Helpers
 					textLocation.X + 500f, textLocation.Y); // Adjust the dimensions as needed
 
 				// Create a new paragraph with the signature text
-				Paragraph paragraph = new Paragraph(signatureText);
+				Paragraph paragraph = new Paragraph(signatureText, font);
 				paragraph.Alignment = Element.ALIGN_LEFT;
 
 				// Add the paragraph to the ColumnText
@@ -131,7 +132,7 @@ namespace SignItNow.Helpers
 
 			var signatureText = page.FindText(searchText, TextFindParameter.None).Finds.LastOrDefault();
 
-			var lastSignatures = page.FindText("Signed by", TextFindParameter.None).Finds.ToList();
+			var lastSignatures = page.FindText("Підписано", TextFindParameter.None).Finds.ToList();
 			
 			if (lastSignatures.Count == 0)
 			{
